@@ -15,7 +15,7 @@ const Country = ({ data, stats }) => {
   return (
     <>
       <Head>
-        <title>USA Covid Situation</title>
+        <title>Bangladesh Covid Situation</title>
       </Head>
       <Navbar />
       <OverView
