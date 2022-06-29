@@ -8,7 +8,7 @@
 .wrapper .title {
   text-align: center;
   font-weight: 550;
-  margin: 5px;
+  margin: 5px 0;
   font-size: 130%;
 }
 
@@ -27,6 +27,7 @@
 .item .number {
   font-size: 145%;
   font-weight: 550;
+  text-align: center;
 }
 
 .confirmed {
@@ -53,4 +54,27 @@
   .graph {
     width: 100%;
   }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.title .flag {
+  background-color: green;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* aspect-ratio: 10/6; */
+}
+
+.title .circle {
+  background-color: red;
+  min-height: 20px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
 }

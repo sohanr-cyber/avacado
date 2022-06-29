@@ -161,11 +161,12 @@ const data = [
   },
 ];
 
-const MixedChart = () => {
+const MixedChart = ({ data }) => {
   const [state, setState] = useState(["line", "bar", "area"]);
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.title}>Daily Confirmed Casses</div>
       <div className={styles.graph}>
         <div className={styles.selections}>
           <div
@@ -227,30 +228,30 @@ const MixedChart = () => {
             }}
           >
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#00ff99" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#00ff99" stopOpacity={0} />
+              <stop offset="5%" stopColor="purple" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="purple" stopOpacity={0} />
             </linearGradient>
-            <XAxis dataKey="name" padding={{ left: 10, right: 20 }} />
+            <XAxis dataKey="date" padding={{ left: 0, right: 0 }} />
             <YAxis orientation={"right"} axisLine={false} tickLine={false} />
 
-            <Tooltip />
-            <Legend />
+            {/* <Tooltip /> */}
+            {/* <Legend /> */}
             {
               <>
                 {state.includes("area") && (
                   <Area
                     type="monotone"
-                    dataKey="pv"
+                    dataKey="new_cases"
                     fill="url(#colorUv)"
                     stroke="#8884d8"
                   />
                 )}
 
                 {state.includes("bar") && (
-                  <Bar dataKey="pv" barSize={20} fill=" #99ff33" />
+                  <Bar dataKey="new_cases" barSize={20} fill="purple" />
                 )}
                 {state.includes("line") && (
-                  <Line type="monotone" dataKey="pv" stroke="purple" />
+                  <Line type="monotone" dataKey="new_cases" stroke="purple" />
                 )}
               </>
             }

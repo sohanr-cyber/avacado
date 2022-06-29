@@ -14,6 +14,12 @@ import {
 const data = [
   {
     name: "Page A",
+    uv: 0,
+    pv: 0,
+    amt: 0,
+  },
+  {
+    name: "Page A",
     uv: 4000,
     pv: 2400,
     amt: 2400,
@@ -158,15 +164,16 @@ const data = [
   },
 ];
 
-const ChartArea = () => {
+const ChartArea = ({ title, number, percent }) => {
   return (
     <div className={styles.wrapper} style={{ width: "100%" }}>
       <div className={styles.graphs} style={{ position: "relative" }}>
         <div className={styles.text}>
-          <div className={styles.heading}>Cricitca Cases treated in ICU</div>
-          <div className={styles.number}>759</div>
+          <div className={styles.heading}>{title}</div>
+          <p></p>
+          {/* <div className={styles.number}>{number}</div> */}
           <div className={styles.percent}>
-            <span>0.1%</span> of total Cases
+            <span>{percent}%</span> of total Cases
           </div>
         </div>
         <ResponsiveContainer width="100%" aspect={5 / 3}>

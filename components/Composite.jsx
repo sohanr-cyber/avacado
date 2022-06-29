@@ -160,12 +160,12 @@ const data = [
   },
 ];
 
-function Composite() {
-  const [state, setState] = useState(["deaths", "recovered", "confirmed"]);
+function Composite({ data }) {
+  const [state, setState] = useState(["deaths", "recovered"]);
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.title}></div>
+      <div className={styles.title}>Daily Recovered And Death Cases</div>
       <div className={styles.graph}>
         <ResponsiveContainer width="100%" aspect={7 / 3}>
           <BarChart
@@ -174,12 +174,12 @@ function Composite() {
             data={data}
             margin={{
               top: 5,
-              right: 30,
-              left: 20,
+              right: 5,
+              left: 5,
               bottom: 5,
             }}
           >
-            <XAxis dataKey="name" padding={{ left: 10, right: 10 }} />
+            <XAxis dataKey="date" padding={{ left: 0, right: 0 }} />
             <YAxis orientation={"right"} axisLine={false} tickLine={false} />
 
             <Tooltip />
@@ -187,14 +187,15 @@ function Composite() {
             {
               <>
                 {state.includes("confirmed") && (
-                  <Bar dataKey="amt" fill="purple" stackId="a" />
+                  <Bar dataKey="new_cases" fill="purple" stackId="a" />
+                )}
+
+                {state.includes("deaths") && (
+                  <Bar dataKey="new_deaths" fill="black" stackId="a" />
                 )}
 
                 {state.includes("recovered") && (
-                  <Bar dataKey="pv" fill="black" stackId="a" />
-                )}
-                {state.includes("deaths") && (
-                  <Bar dataKey="uv" fill="yellowgreen" stackId="a" />
+                  <Bar dataKey="new_deaths" fill="yellowgreen" stackId="a" />
                 )}
               </>
             }
@@ -202,7 +203,7 @@ function Composite() {
         </ResponsiveContainer>
       </div>
       <div className={styles.legends}>
-        <span
+        {/* <span
           className={styles.legend}
           onClick={() =>
             state.includes("confirmed")
@@ -214,7 +215,7 @@ function Composite() {
           }}
         >
           Confirmed
-        </span>
+        </span> */}
         <span
           className={styles.legend}
           onClick={() =>
